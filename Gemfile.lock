@@ -169,6 +169,7 @@ DEPENDENCIES
   beautiful-jekyll-theme!
   bundler (>= 1.16)
   rake (~> 12.0)
+  sass-embedded (~> 1.69)
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm (~> 0.1)
