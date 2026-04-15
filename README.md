@@ -21,3 +21,5 @@ The goal of this project is to:
 - Share knowledge and document my learning journey  
 - Maintain a consistent writing habit  
 - Showcase technical projects and experiments  
+
+![BlogProjectDiagram](/assets/img/BlogProjectDiagram.png "We did it.")
