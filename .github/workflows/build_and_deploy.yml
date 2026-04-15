@@ -10,7 +10,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: 'us-east-1'
   BUNDLE_PATH: vendor/bundle
-  BUNDLE_FORCE_RUBY_PLATFORM: "1"
+  BUNDLE_FORCE_RUBY_PLATFORM: '1'
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: "3.3"
-        bundler-cache: false
+        ruby-version: '3.3'
+        bundler-cache: true
 
     # 🔍 DEBUG: confirms Ruby actually switched
     - name: Verify Ruby version
