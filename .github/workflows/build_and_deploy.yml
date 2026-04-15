@@ -28,9 +28,8 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: "3.2.2"
+        ruby-version: "3.3"
         bundler-cache: false
-        cache-version: 2   # 👈 forces fresh toolchain install
 
     # 🔍 DEBUG: confirms Ruby actually switched
     - name: Verify Ruby version
