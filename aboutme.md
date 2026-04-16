@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: "Be yourself; everyone else is already taken." 
+#subtitle: "Be yourself; everyone else is already taken." 
 ---
 
 >"I’m just a man, standing in front of an ever-changing technological landscape, asking it to make sense."  
