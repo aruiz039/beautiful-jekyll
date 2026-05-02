@@ -27,6 +27,6 @@ I think the other stretch of getting there are mainly two things.
 
 During the exam you have access to the documentation. The better you know where things are the quicker you will finish the live exercises you are working on. 
 
-When you purchase the Exam you are sent links at least current to two 15-17 question practice sessions where you are doing live exercises like the exam. Killer.sh is much hard than the actual exam and that is good. Named appropriately for what it is. The practice tests in Kubernetes course are about as difficult as the exam or a little easier. 
+When you purchase the Exam you are sent links at least currently to two 15-17 question practice sessions where you are doing live exercises like the exam. Killer.sh is much hard than the actual exam and that is good. Named appropriately for what it is. The practice tests in Kubernetes course are about as difficult as the exam or a little easier. 
 
 I hope this information provides helpful for anyone who comes across this and is going for the certification.
