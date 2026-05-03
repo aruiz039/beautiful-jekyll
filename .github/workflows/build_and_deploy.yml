@@ -5,46 +5,55 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+# Required for OIDC token generation
+permissions:
+  id-token: write
+  contents: read
+
 env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: 'us-east-1'
 
 jobs:
   build:
-    runs-on: ubuntu-22.04   # 👈 more stable for Jekyll + native gems
+    runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    # 🔍 DEBUG: proves what Ruby is actually running
-    - name: Show system Ruby (pre-setup)
-      run: |
-        ruby -v || true
-        which ruby || true
+      - name: Show system Ruby (pre-setup)
+        run: |
+          ruby -v || true
+          which ruby || true
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: "3.2.3"
-        bundler-cache: true
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2.3"
+          bundler-cache: true
 
-    # 🔍 DEBUG: confirms Ruby actually switched
-    - name: Verify Ruby version
-      run: |
-        ruby -v
-        which ruby
-        which bundle
+      - name: Verify Ruby version
+        run: |
+          ruby -v
+          which ruby
+          which bundle
 
-    - name: Install dependencies
-      run: bundle install
+      - name: Install dependencies
+        run: bundle install
 
-    - name: Build site
-      run: bundle exec jekyll build
-      env:
-        JEKYLL_ENV: production
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
-    - name: "Deploy to AWS S3"
-      run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete --cache-control max-age=604800
-    - name: "Create AWS Cloudfront Invalidation"
-      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      # OIDC: Replaces static AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Deploy to AWS S3
+        run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete --cache-control max-age=604800
+
+      - name: Create AWS CloudFront Invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"  
