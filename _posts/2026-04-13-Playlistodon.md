@@ -22,3 +22,6 @@ Later in the week I went to an event in where people get together, code and pres
 I decided to use GitHub Copilot as my assistant which was easy to integrate into VS Code. I presented a prompt asking for copilot to do the authentication and that is exactly what I was given. A near complete working concept of what I was looking for. It was my first time using a coding agent and it was a little scary to me how it was able to provide a solution so quickly but I was grateful. 
 
 In the end I am glad I got the project to work and appreciate some of the things I learned about using coding agents to make end goals happen. 
+
+### Some of the more technical details i leave for Github
+[Playlistodon](https://github.com/aruiz039/Playlistodon)  
