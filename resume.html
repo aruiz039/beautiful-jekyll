@@ -1,0 +1,343 @@
+---
+layout: page
+title: Resume
+subtitle: Site Reliability Engineer
+---
+
+<!-- ============================================================
+     Custom resume styling. Everything is scoped under #resume
+     so it won't affect any other page on the site.
+     ============================================================ -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+#resume {
+  --ink: #14181f;
+  --muted: #5b6573;
+  --line: #e2e6ec;
+  --accent: #1f6feb;     /* signal blue — reads "infra/ops" */
+  --accent-dim: #e8f0fe;
+  --paper: #ffffff;
+  --chip: #f4f6f9;
+  font-family: 'Inter Tight', -apple-system, sans-serif;
+  color: var(--ink);
+  max-width: 860px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+#resume * { box-sizing: border-box; }
+
+/* ---------- Header ---------- */
+#resume .r-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 2rem;
+}
+#resume .r-head h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+#resume .r-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+#resume .r-contact {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.8;
+}
+#resume .r-contact a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+#resume .r-contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+#resume .r-download {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.45rem 1.1rem;
+  background: var(--ink);
+  color: #fff !important;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+#resume .r-download:hover { background: var(--accent); transform: translateY(-1px); }
+
+/* ---------- Section titles ---------- */
+#resume .r-section { margin: 2.6rem 0 1.2rem; }
+#resume .r-section h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+}
+#resume .r-section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+#resume .r-summary {
+  font-size: 1.05rem;
+  color: #2c333d;
+}
+
+/* ---------- Timeline ---------- */
+#resume .r-timeline {
+  position: relative;
+  margin-left: 0.4rem;
+  padding-left: 1.8rem;
+  border-left: 2px solid var(--line);
+}
+#resume .r-job { position: relative; padding-bottom: 1.9rem; }
+#resume .r-job:last-child { padding-bottom: 0; }
+#resume .r-job::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.8rem - 7px);
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2.5px solid var(--accent);
+}
+#resume .r-job-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+#resume .r-job-title { font-weight: 600; font-size: 1.12rem; }
+#resume .r-job-co { color: var(--accent); font-weight: 600; }
+#resume .r-job-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+#resume .r-job ul { margin: 0.7rem 0 0; padding-left: 1.1rem; }
+#resume .r-job li { margin-bottom: 0.45rem; color: #353c46; }
+#resume .r-job li::marker { color: var(--accent); }
+
+/* ---------- Skills cards ---------- */
+#resume .r-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+#resume .r-card {
+  background: var(--chip);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#resume .r-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+#resume .r-card h3 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+#resume .r-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+#resume .r-tag {
+  font-size: 0.82rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.22rem 0.6rem;
+  color: var(--ink);
+}
+
+/* ---------- Certs + Education rows ---------- */
+#resume .r-certs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+#resume .r-cert {
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+}
+#resume .r-edu { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; }
+#resume .r-edu .r-job-title { font-size: 1.02rem; }
+
+/* ---------- Entrance animation ---------- */
+#resume .r-section, #resume .r-head { animation: rfade 0.6s ease both; }
+#resume .r-section:nth-of-type(1) { animation-delay: 0.05s; }
+#resume .r-section:nth-of-type(2) { animation-delay: 0.12s; }
+#resume .r-section:nth-of-type(3) { animation-delay: 0.19s; }
+#resume .r-section:nth-of-type(4) { animation-delay: 0.26s; }
+@keyframes rfade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  #resume .r-section, #resume .r-head { animation: none; }
+}
+
+@media (max-width: 600px) {
+  #resume .r-head, #resume .r-contact { text-align: left; }
+  #resume .r-contact { text-align: left; }
+}
+</style>
+
+<div id="resume">
+
+  <div class="r-head">
+    <div>
+      <h1>Alfredo Ruiz</h1>
+      <div class="r-role">Site Reliability Engineer</div>
+      <a class="r-download" href="/assets/Alfredo_Ruiz_Resume.pdf" download>↓ Download PDF</a>
+    </div>
+    <div class="r-contact">
+      Miami, FL<br>
+      <a href="mailto:aruiz039@gmail.com">aruiz039@gmail.com</a><br>
+      <a href="https://github.com/aruiz039">github.com/aruiz039</a><br>
+      <a href="https://blog.alfiest.com">blog.alfiest.com</a>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <h2>Summary</h2>
+  </div>
+  <p class="r-summary">
+    Site Reliability Engineer with 10+ years operating and scaling enterprise Linux and
+    cloud-native environments, including deep expertise in Kubernetes and Red Hat OpenShift
+    on Azure. Proven track record ensuring high availability of production infrastructure,
+    leading cloud migrations, and driving reliability and automation initiatives across
+    distributed global teams.
+  </p>
+
+  <div class="r-section">
+    <h2>Experience</h2>
+  </div>
+  <div class="r-timeline">
+
+    <div class="r-job">
+      <div class="r-job-head">
+        <div class="r-job-title">Site Reliability Engineer · <span class="r-job-co">Amadeus</span></div>
+        <div class="r-job-meta">Oct 2022 – Oct 2025 · Miami, FL</div>
+      </div>
+      <ul>
+        <li>Engineered and operated multiple Red Hat OpenShift Kubernetes PaaS environments on Microsoft Azure, ensuring high availability for mission-critical airline production workloads.</li>
+        <li>Led on-premises to cloud application migrations, coordinating cross-functional teams and minimizing disruption through rigorous runbooks and change management.</li>
+        <li>Drove observability improvements integrating Prometheus, Grafana, and Splunk for real-time monitoring and alerting across distributed environments.</li>
+        <li>Optimized cloud infrastructure spend through workload right-sizing, achieving approximately $70K in annual cost savings while maintaining performance SLAs.</li>
+        <li>Mentored a distributed international team on OpenShift SRE practices, expanding global support coverage and improving operational resilience.</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-head">
+        <div class="r-job-title">System Engineer · <span class="r-job-co">Amadeus</span></div>
+        <div class="r-job-meta">Oct 2014 – Oct 2022 · Miami, FL</div>
+      </div>
+      <ul>
+        <li>Triaged and resolved complex incidents in airline IT infrastructure, managing high-priority escalations with full root cause analysis and post-mortem documentation.</li>
+        <li>Built a Python-based automation tool to analyze software load failures, surfacing recurring error patterns and enabling targeted remediation.</li>
+        <li>Designed incident and problem ticket tracking dashboards, eliminating hundreds of recurring issues and improving customer-facing uptime.</li>
+      </ul>
+    </div>
+
+    <div class="r-job">
+      <div class="r-job-head">
+        <div class="r-job-title">System Engineer · <span class="r-job-co">Mariner Systems</span></div>
+        <div class="r-job-meta">Sep 2011 – Sep 2014 · Miami, FL</div>
+      </div>
+      <ul>
+        <li>Managed enterprise 24/7 operations including system recovery, performance troubleshooting, and monitoring for clients including Coca-Cola, AmerisourceBergen, and Dole.</li>
+        <li>Directed a project to mass-produce reimaging USB tools for 800+ units, enabling in-field recovery and eliminating costly equipment returns.</li>
+        <li>Administered in-house networking, web hosting, and digital advertising infrastructure for high-uptime client environments.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="r-section">
+    <h2>Skills</h2>
+  </div>
+  <div class="r-grid">
+    <div class="r-card">
+      <h3>Cloud &amp; Infrastructure</h3>
+      <div class="r-tags">
+        <span class="r-tag">Kubernetes</span>
+        <span class="r-tag">Red Hat OpenShift</span>
+        <span class="r-tag">Microsoft Azure</span>
+        <span class="r-tag">AWS</span>
+        <span class="r-tag">Docker</span>
+        <span class="r-tag">Terraform</span>
+        <span class="r-tag">Ansible</span>
+        <span class="r-tag">Linux</span>
+        <span class="r-tag">MS Hyper-V</span>
+        <span class="r-tag">Apache</span>
+      </div>
+    </div>
+    <div class="r-card">
+      <h3>Observability &amp; CI/CD</h3>
+      <div class="r-tags">
+        <span class="r-tag">Prometheus</span>
+        <span class="r-tag">Grafana</span>
+        <span class="r-tag">Splunk</span>
+        <span class="r-tag">Jenkins</span>
+        <span class="r-tag">GitHub Actions</span>
+      </div>
+    </div>
+    <div class="r-card">
+      <h3>Languages &amp; Tooling</h3>
+      <div class="r-tags">
+        <span class="r-tag">Python</span>
+        <span class="r-tag">SQL</span>
+        <span class="r-tag">Jsonnet</span>
+        <span class="r-tag">HTML</span>
+        <span class="r-tag">CSS</span>
+        <span class="r-tag">PHP</span>
+        <span class="r-tag">Jira</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <h2>Certifications</h2>
+  </div>
+  <div class="r-certs">
+    <span class="r-cert">Certified Kubernetes Administrator (CKA)</span>
+    <span class="r-cert">Azure Fundamentals (AZ-900)</span>
+    <span class="r-cert">AWS Cloud Practitioner</span>
+    <span class="r-cert">ITIL Foundations</span>
+  </div>
+
+  <div class="r-section">
+    <h2>Education</h2>
+  </div>
+  <div class="r-edu">
+    <div class="r-job-title">B.S., Information Technology · <span class="r-job-co">Florida International University</span></div>
+    <div class="r-job-meta">Miami, FL</div>
+  </div>
+
+</div>
