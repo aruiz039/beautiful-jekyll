@@ -1,0 +1,8 @@
+/* Show the whole cover image instead of cropping it */
+.intro-header.big-img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #1a1a1a;
+  min-height: 400px;
+}

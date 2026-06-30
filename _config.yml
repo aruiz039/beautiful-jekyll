@@ -38,6 +38,9 @@ avatar: "/assets/img/Selfie.jpg"
 # then specify the following parameter
 #title-img: /path/to/image
 
+site-css:
+  - /assets/css/custom.css
+
 
 #####################################
 # --- Footer social media links --- #
